@@ -1,19 +1,16 @@
-import Card from "./Card";
 import { getNotes } from "@/api/notes";
-import styles from "./Grid.module.css";
+import Card from "./Card";
 
 export default async function Grid() {
   const notes = await getNotes();
 
   return (
-    <div className={`container ${styles.container}`}>
-      <ul className={styles.grid}>
-        {notes.map((note) => (
-          <li key={note._id}>
-            <Card note={note} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="grid auto-cols-fr grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 ">
+      {notes.map((note) => (
+        <li key={note._id}>
+          <Card note={note} />
+        </li>
+      ))}
+    </ul>
   );
 }

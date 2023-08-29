@@ -1,21 +1,22 @@
 import Image from "next/image";
-import styles from "./Banner.module.css";
 
 export default function Banner() {
   return (
-    <div className={styles.banner}>
-      <div className={styles.image}>
+    <div className="from-support absolute inset-0 z-0 mx-auto min-h-screen w-auto bg-gradient-to-b">
+      <div className="absolute left-0 right-0 top-0 mx-auto h-[24rem] max-w-[1536px]">
         <Image
+          className="object-cover"
           src="/images/cover.png"
           alt="Cover"
           priority
           fill
-          style={{ objectFit: "cover" }}
         />
       </div>
-      <div className={`container ${styles.content}`}>
-        <h1 className={styles.title}>VacciZe</h1>
-        <h2 className={styles.description}>Health protection made easy</h2>
+      <div className="container relative top-[10rem] flex flex-col gap-4 text-right">
+        <h1 className="text-heading text-4xl font-semibold tracking-tight">
+          Your Vaccine Partner
+        </h1>
+        <h2 className="text-2xl tracking-tight">Health protection made easy</h2>
       </div>
     </div>
   );

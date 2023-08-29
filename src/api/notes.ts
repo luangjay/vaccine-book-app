@@ -1,42 +1,47 @@
 export type Note = {
   _id: number;
   _creationTime: number;
-  author: string;
-  description: string;
-  image: string;
+  author: string | null;
+  description: string | null;
+  image: string | null;
   isLocked: boolean;
-  title: string;
+  title: string | null;
 };
 
 const notes: Note[] = [
   {
     _id: 0,
     _creationTime: 1692388878000,
-    author: "luangjay",
-    description: "Welcome to my vaccine booking app!",
-    image: "/images/note-0.jpg",
+    author: null,
+    description: "1873 Rama 4 Rd. Pathumwan Bangkok 10330",
+    image: "/images/chula.jpg",
     isLocked: true,
-    title: "Hello",
+    title: "Chulalongkorn Hospital",
   },
   {
     _id: 1,
     _creationTime: 1692455923000,
-    author: "ChatGPT",
+    author: null,
     description:
-      "Vaccines work by introducing an inactive form of a pathogen to stimulate the immune system's defense.",
-    image: "/images/note-1.jpg",
+      "2, Phayathai Road, Ratchathewi District, Bangkok 10400, Thailand",
+    image: "/images/rajavithi.jpg",
     isLocked: true,
-    title: "How Vaccines Work",
+    title: "Rajavithi Hospital",
   },
   {
     _id: 2,
     _creationTime: 1692469196000,
-    author: "Friedrich Nietzsche",
-    description: "That which does not kill us makes us stronger.",
-    image: "/images/note-2.jpg",
+    author: null,
+    description:
+      "95/8 , Khlongnueng sub-district, Khlongluang district, Pathumthani",
+    image: "/images/thammasat.jpg",
     isLocked: true,
-    title: "Just Like Vaccines",
+    title: "Thammasat University Hospital",
   },
 ];
 
-export const getNotes = async (): Promise<Note[]> => notes;
+export const getNotes = async (): Promise<Note[]> => {
+  return await new Promise((resolve) => {
+    resolve(notes);
+  });
+};
