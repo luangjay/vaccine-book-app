@@ -1,0 +1,51 @@
+.banner {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-image: linear-gradient(
+    180deg,
+    rgba(var(--support), 1),
+    rgba(var(--support), 0)
+  );
+  width: auto;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  height: 20rem;
+  padding-top: 5rem;
+  text-align: right;
+}
+
+.title {
+  font-family: "title";
+  font-size: 6rem;
+  font-weight: bold;
+  line-height: 1;
+  color: rgb(var(--heading));
+  letter-spacing: -0.05em;
+  user-select: none;
+}
+
+.description {
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+.image {
+  position: relative;
+  height: 20rem;
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+  .image {
+    margin: 0 auto;
+    max-width: 1536px;
+  }
+}
