@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-type MenuItemProps = {
+type TopMenuItemProps = {
   href: string;
   children?: React.ReactNode;
 };
 
-export default function TopMenuItem({ href, children }: MenuItemProps) {
+export default function TopMenuItem({ href, children }: TopMenuItemProps) {
   return (
     <Link
       className="overflow-hidden text-lg hover:text-foreground/80"

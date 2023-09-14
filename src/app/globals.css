@@ -5,11 +5,34 @@
 @layer base {
   :root {
     --background: 240, 14%, 97%;
-    --support: 200, 74%, 83%;
     --foreground: 210, 50%, 2%;
-    --heading: 225, 45%, 31%;
-    --accent: 165, 35.4%, 38.6%;
+
+    --support: 200, 74%, 83%;
     --highlight: 55, 99.1%, 50.4%;
+
+    --primary: 216, 85%, 34%;
+    --primary-light: 217, 49%, 47%;
+    --primary-dark: 217, 85%, 24%;
+
+    --info: 199, 98%, 48%;
+    --info-light: 199, 91%, 59%;
+    --info-dark: 199, 98%, 34%;
+
+    --success: 122, 39%, 49%;
+    --success-light: 123, 38%, 59%;
+    --success-dark: 123, 39%, 34%;
+
+    --secondary: 173, 100%, 21%;
+    --secondary-light: 172, 45%, 36%;
+    --secondary-dark: 173, 100%, 14%;
+
+    --error: 4, 90%, 58%;
+    --error-light: 4, 89%, 67%;
+    --error-dark: 4, 64%, 41%;
+
+    --warning: 45, 100%, 51%;
+    --warning-light: 45, 100%, 61%;
+    --warning-dark: 45, 96%, 36%;
   }
 }
 

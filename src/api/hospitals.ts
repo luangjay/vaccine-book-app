@@ -1,21 +1,19 @@
-export type Note = {
+export type Hospital = {
   _id: number;
   _creationTime: number;
   author: string | null;
   description: string | null;
   image: string | null;
-  isLocked: boolean;
   title: string | null;
 };
 
-const notes: Note[] = [
+const hospitals: Hospital[] = [
   {
     _id: 0,
     _creationTime: 1692388878000,
     author: null,
     description: "1873 Rama 4 Rd. Pathumwan Bangkok 10330",
     image: "/images/chula.jpg",
-    isLocked: true,
     title: "Chulalongkorn Hospital",
   },
   {
@@ -25,7 +23,6 @@ const notes: Note[] = [
     description:
       "2, Phayathai Road, Ratchathewi District, Bangkok 10400, Thailand",
     image: "/images/rajavithi.jpg",
-    isLocked: true,
     title: "Rajavithi Hospital",
   },
   {
@@ -35,13 +32,12 @@ const notes: Note[] = [
     description:
       "95/8 , Khlongnueng sub-district, Khlongluang district, Pathumthani",
     image: "/images/thammasat.jpg",
-    isLocked: true,
     title: "Thammasat University Hospital",
   },
 ];
 
-export const getNotes = async (): Promise<Note[]> => {
+export const getHospitals = async (): Promise<Hospital[]> => {
   return await new Promise((resolve) => {
-    resolve(notes);
+    resolve(hospitals);
   });
 };

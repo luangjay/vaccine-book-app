@@ -14,11 +14,39 @@ const config: Config = {
     extend: {
       colors: {
         background: "hsla(var(--background))",
-        support: "hsla(var(--support))",
         foreground: "hsla(var(--foreground))",
-        heading: "hsla(var(--heading))",
-        accent: "hsla(var(--accent))",
+        support: "hsla(var(--support))",
         highlight: "hsla(var(--highlight))",
+        primary: {
+          DEFAULT: "hsla(var(--primary))",
+          light: "hsla(var(--primary-light))",
+          dark: "hsla(var(--primary-dark))",
+        },
+        secondary: {
+          DEFAULT: "hsla(var(--secondary))",
+          light: "hsla(var(--secondary-light))",
+          dark: "hsla(var(--secondary-dark))",
+        },
+        info: {
+          DEFAULT: "hsla(var(--info))",
+          light: "hsla(var(--info-light))",
+          dark: "hsla(var(--info-dark))",
+        },
+        success: {
+          DEFAULT: "hsla(var(--success))",
+          light: "hsla(var(--success-light))",
+          dark: "hsla(var(--success-dark))",
+        },
+        warning: {
+          DEFAULT: "hsla(var(--warning))",
+          light: "hsla(var(--warning-light))",
+          dark: "hsla(var(--warning-dark))",
+        },
+        error: {
+          DEFAULT: "hsla(var(--error))",
+          light: "hsla(var(--error-light))",
+          dark: "hsla(var(--error-dark))",
+        },
       },
       fontFamily: {
         sans: [

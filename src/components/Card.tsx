@@ -1,41 +1,82 @@
-import { type Note } from "@/api/notes";
-import { format } from "date-fns";
+"use client";
+
+import { type Hospital } from "@/api/hospitals";
+import { cn } from "@/lib/utils";
+import { OpenInFull } from "@mui/icons-material";
+import { Dialog, DialogContent } from "@mui/material";
 import Image from "next/image";
+import * as React from "react";
+import { useState } from "react";
+import CardContent from "./CardContent";
 
 type CardProps = {
-  note: Note;
+  hospital: Hospital;
 };
 
-export default function Card({ note }: CardProps) {
+export default function Card({ hospital }: CardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleHover = (e: React.SyntheticEvent) => {
+    setIsHovered(e.type === "mouseover");
+  };
+
+  const handleCardMouseAction = (e: React.SyntheticEvent) => {
+    if (e.type === "mouseover") {
+      e.currentTarget.classList.remove("shadow-lg");
+      e.currentTarget.classList.remove("bg-white");
+      e.currentTarget.classList.add("shadow-2xl");
+      e.currentTarget.classList.add("bg-neutral-200");
+    } else {
+      e.currentTarget.classList.remove("shadow-2xl");
+      e.currentTarget.classList.remove("bg-neutral-200");
+      e.currentTarget.classList.add("shadow-lg");
+      e.currentTarget.classList.add("bg-white");
+    }
+  };
+
+  const handleDialogOpen = () => void setIsDialogOpen(true);
+  const handleDialogClose = () => void setIsDialogOpen(false);
+
   return (
-    <div className="flex flex-col rounded-xl bg-background pt-8 font-mono shadow-md">
-      <div className="relative flex aspect-[3/2] items-center justify-center">
-        <Image
-          className="object-cover"
-          src={note.image ?? ""}
-          alt="Note"
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-        />
-      </div>
-      <div className="flex flex-1 flex-col gap-2 px-4 py-5">
-        <div className="flex items-center justify-between gap-2">
-          <h3 className="text-heading truncate border border-transparent text-xl font-bold tracking-tight">
-            {note.title || "No Title"}
-          </h3>
-        </div>
-        <div className="h-24">
-          <p className="h-[calc(100%+2px)] overflow-y-auto border border-transparent">
-            {note.description || "No description"}
-          </p>
-        </div>
-        <div className="flex items-center justify-end text-right text-foreground/60">
-          <p className="truncate border border-transparent text-sm">
-            {note.author || "Anonymous"}&nbsp;-&nbsp;
-            {format(note._creationTime, "M/d/yyyy")}
-          </p>
-        </div>
-      </div>
+    <div
+      className="relative flex flex-col"
+      onMouseOver={handleHover}
+      onMouseOut={handleHover}
+    >
+      <button
+        className={cn(
+          "absolute right-4 top-4 z-10 rounded-full border bg-white p-2 hover:bg-background/90",
+          !isHovered && "hidden"
+        )}
+        onClick={handleDialogOpen}
+      >
+        <OpenInFull />
+      </button>
+      <CardContent
+        className="bg-white shadow-lg hover:bg-neutral-200 hover:shadow-2xl"
+        hospital={hospital}
+        onMouseOver={handleCardMouseAction}
+        onMouseOut={handleCardMouseAction}
+      />
+      <Dialog
+        fullWidth
+        keepMounted
+        open={isDialogOpen}
+        onClose={handleDialogClose}
+      >
+        <DialogContent sx={{ padding: 0 }}>
+          <div className="rounded-inherit relative aspect-[3/2] w-full">
+            <Image
+              className="object-cover"
+              quality={100}
+              src={hospital.image ?? ""}
+              alt={hospital.title ?? ""}
+              fill
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
