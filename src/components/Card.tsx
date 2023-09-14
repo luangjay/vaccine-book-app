@@ -3,7 +3,7 @@
 import { type Hospital } from "@/api/hospitals";
 import { cn } from "@/lib/utils";
 import { OpenInFull } from "@mui/icons-material";
-import { Dialog, DialogContent } from "@mui/material";
+import { Dialog, DialogContent, Rating } from "@mui/material";
 import Image from "next/image";
 import * as React from "react";
 import { useState } from "react";
@@ -11,9 +11,11 @@ import CardContent from "./CardContent";
 
 type CardProps = {
   hospital: Hospital;
+  rating?: number | null;
+  onRatingChange?: (hospitalName: string, rating: number | null) => void;
 };
 
-export default function Card({ hospital }: CardProps) {
+export default function Card({ hospital, rating, onRatingChange }: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -21,26 +23,12 @@ export default function Card({ hospital }: CardProps) {
     setIsHovered(e.type === "mouseover");
   };
 
-  const handleCardMouseAction = (e: React.SyntheticEvent) => {
-    if (e.type === "mouseover") {
-      e.currentTarget.classList.remove("shadow-lg");
-      e.currentTarget.classList.remove("bg-white");
-      e.currentTarget.classList.add("shadow-2xl");
-      e.currentTarget.classList.add("bg-neutral-200");
-    } else {
-      e.currentTarget.classList.remove("shadow-2xl");
-      e.currentTarget.classList.remove("bg-neutral-200");
-      e.currentTarget.classList.add("shadow-lg");
-      e.currentTarget.classList.add("bg-white");
-    }
-  };
-
   const handleDialogOpen = () => void setIsDialogOpen(true);
   const handleDialogClose = () => void setIsDialogOpen(false);
 
   return (
     <div
-      className="relative flex flex-col"
+      className="relative flex flex-col overflow-hidden rounded-xl bg-white font-mono shadow-lg hover:bg-neutral-200 hover:shadow-2xl"
       onMouseOver={handleHover}
       onMouseOut={handleHover}
     >
@@ -53,12 +41,17 @@ export default function Card({ hospital }: CardProps) {
       >
         <OpenInFull />
       </button>
-      <CardContent
-        className="bg-white shadow-lg hover:bg-neutral-200 hover:shadow-2xl"
-        hospital={hospital}
-        onMouseOver={handleCardMouseAction}
-        onMouseOut={handleCardMouseAction}
-      />
+      <CardContent hospital={hospital} />
+      <div className="flex items-center justify-end px-4 pb-5 text-right text-foreground/60">
+        <Rating
+          value={rating ?? null}
+          onChange={(_, rating) => {
+            if (onRatingChange && hospital.title) {
+              onRatingChange(hospital.title, rating);
+            }
+          }}
+        />
+      </div>
       <Dialog
         fullWidth
         keepMounted
