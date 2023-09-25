@@ -4,7 +4,7 @@ import { type Hospital } from "@/api/hospitals";
 import { cn } from "@/lib/utils";
 import { Delete, ExpandLess, ExpandMore } from "@mui/icons-material";
 import { IconButton, List, ListItem, ListItemText } from "@mui/material";
-import React, { useReducer, useState } from "react";
+import { useReducer, useState } from "react";
 import Card from "./Card";
 
 type CardPanelProps = {
@@ -58,13 +58,13 @@ export default function CardPanel({ hospitals }: CardPanelProps) {
   };
 
   return (
-    <React.Fragment>
+    <>
       <ul className="grid auto-cols-fr grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
         {hospitals.map((hospital) => (
-          <li key={hospital._id}>
+          <li key={hospital.id}>
             <Card
               hospital={hospital}
-              rating={ratings.get(hospital.title ?? "")}
+              rating={ratings.get(hospital.name ?? "")}
               onRatingChange={handleRatingChange}
             />
           </li>
@@ -104,6 +104,6 @@ export default function CardPanel({ hospitals }: CardPanelProps) {
           ))}
         </List>
       </div>
-    </React.Fragment>
+    </>
   );
 }

@@ -62,8 +62,8 @@ export default function BookingForm({ hospitals }: BookingFormProps) {
         <div className="flex w-full gap-4">
           <TextField size="small" sx={{ flex: 1.5 }} label="Hospital" select>
             {hospitals.map((hospital) => (
-              <MenuItem key={hospital._id} value={hospital._id}>
-                {hospital.title}
+              <MenuItem key={hospital.id} value={hospital.id}>
+                {hospital.name}
               </MenuItem>
             ))}
           </TextField>

@@ -1,5 +1,6 @@
 import { type Hospital } from "@/api/hospitals";
 import Image from "next/image";
+import Link from "next/link";
 
 type CardContentProps = {
   hospital: Hospital;
@@ -8,19 +9,22 @@ type CardContentProps = {
 export default function CardContent({ hospital }: CardContentProps) {
   return (
     <div className="flex flex-col font-mono">
-      <div className="relative flex aspect-[3/2] items-center justify-center">
+      <Link
+        className="relative flex aspect-[3/2] items-center justify-center overflow-hidden"
+        href={`/hospital/${hospital.id}`}
+      >
         <Image
-          className="object-cover"
+          className="transition-width transition-height object-cover duration-500 hover:scale-110"
           src={hospital.image ?? ""}
           alt="Note"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
         />
-      </div>
+      </Link>
       <div className="flex flex-1 flex-col gap-2 px-4 pt-5">
         <div className="flex items-center justify-between gap-2">
           <h3 className="truncate border border-transparent text-xl font-bold tracking-tight text-primary-dark">
-            {hospital.title || "No Title"}
+            {hospital.name || "No Title"}
           </h3>
         </div>
         <div className="h-24">

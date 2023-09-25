@@ -23,12 +23,16 @@ export default function Card({ hospital, rating, onRatingChange }: CardProps) {
     setIsHovered(e.type === "mouseover");
   };
 
-  const handleDialogOpen = () => void setIsDialogOpen(true);
-  const handleDialogClose = () => void setIsDialogOpen(false);
+  const handleDialogOpen = () => {
+    setIsDialogOpen(true);
+  };
+  const handleDialogClose = () => {
+    setIsDialogOpen(false);
+  };
 
   return (
     <div
-      className="relative flex flex-col overflow-hidden rounded-xl bg-white font-mono shadow-lg hover:bg-neutral-200 hover:shadow-2xl"
+      className="relative flex flex-col overflow-hidden rounded-xl bg-white font-mono shadow-lg hover:bg-neutral-100 hover:shadow-2xl"
       onMouseOver={handleHover}
       onMouseOut={handleHover}
     >
@@ -46,8 +50,8 @@ export default function Card({ hospital, rating, onRatingChange }: CardProps) {
         <Rating
           value={rating ?? null}
           onChange={(_, rating) => {
-            if (onRatingChange && hospital.title) {
-              onRatingChange(hospital.title, rating);
+            if (onRatingChange && hospital.name) {
+              onRatingChange(hospital.name, rating);
             }
           }}
         />
@@ -64,7 +68,7 @@ export default function Card({ hospital, rating, onRatingChange }: CardProps) {
               className="object-cover"
               quality={100}
               src={hospital.image ?? ""}
-              alt={hospital.title ?? ""}
+              alt={hospital.name ?? ""}
               fill
             />
           </div>
