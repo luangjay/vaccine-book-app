@@ -1,6 +1,6 @@
 "use client";
 
-import { type Hospital } from "@/api/hospitals";
+import { type Hospital } from "@/lib/schema";
 import { cn } from "@/lib/utils";
 import { OpenInFull } from "@mui/icons-material";
 import { Dialog, DialogContent, Rating } from "@mui/material";
@@ -47,14 +47,16 @@ export default function Card({ hospital, rating, onRatingChange }: CardProps) {
       </button>
       <CardContent hospital={hospital} />
       <div className="flex items-center justify-end px-4 pb-5 text-right text-foreground/60">
-        <Rating
-          value={rating ?? null}
-          onChange={(_, rating) => {
-            if (onRatingChange && hospital.name) {
-              onRatingChange(hospital.name, rating);
-            }
-          }}
-        />
+        {rating !== undefined && (
+          <Rating
+            value={rating}
+            onChange={(_, rating) => {
+              if (onRatingChange && hospital.name) {
+                onRatingChange(hospital.name, rating);
+              }
+            }}
+          />
+        )}
       </div>
       <Dialog
         fullWidth
@@ -67,7 +69,7 @@ export default function Card({ hospital, rating, onRatingChange }: CardProps) {
             <Image
               className="object-cover"
               quality={100}
-              src={hospital.image ?? ""}
+              src={hospital.picture ?? ""}
               alt={hospital.name ?? ""}
               fill
             />

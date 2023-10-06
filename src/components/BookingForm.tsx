@@ -1,6 +1,6 @@
 "use client";
 
-import { type Hospital } from "@/api/hospitals";
+import { type Hospital } from "@/lib/schema";
 import { Event } from "@mui/icons-material";
 import { Button, MenuItem, TextField } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";

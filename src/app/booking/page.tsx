@@ -1,5 +1,5 @@
-import { getHospitals } from "@/api/hospitals";
 import BookingForm from "@/components/BookingForm";
+import getHospitals from "@/libs/getHospitals";
 
 export default async function Page() {
   const hospitals = await getHospitals();

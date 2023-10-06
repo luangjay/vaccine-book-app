@@ -1,4 +1,4 @@
-import { type Hospital } from "@/api/hospitals";
+import { type Hospital } from "@/lib/schema";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,7 +15,7 @@ export default function CardContent({ hospital }: CardContentProps) {
       >
         <Image
           className="transition-width transition-height object-cover duration-500 hover:scale-110"
-          src={hospital.image ?? ""}
+          src={hospital.picture ?? ""}
           alt="Note"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
@@ -29,7 +29,7 @@ export default function CardContent({ hospital }: CardContentProps) {
         </div>
         <div className="h-24">
           <p className="h-[calc(100%+2px)] overflow-y-auto border border-transparent">
-            {hospital.description || "No description"}
+            {hospital.address || "No description"}
           </p>
         </div>
       </div>

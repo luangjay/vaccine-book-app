@@ -1,6 +1,6 @@
 "use client";
 
-import { type Hospital } from "@/api/hospitals";
+import { type Hospital } from "@/lib/schema";
 import { cn } from "@/lib/utils";
 import { Delete, ExpandLess, ExpandMore } from "@mui/icons-material";
 import { IconButton, List, ListItem, ListItemText } from "@mui/material";

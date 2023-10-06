@@ -1,4 +1,4 @@
-import { getHospitals } from "@/api/hospitals";
+import getHospital from "@/libs/getHospital";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -9,20 +9,17 @@ type PageProps = {
 };
 
 export default async function Page({ params }: PageProps) {
-  const hospitals = await getHospitals();
-  const hospital = hospitals.find(
-    (hospital) => hospital.id === parseInt(params.hid)
-  );
+  const hospital = await getHospital(params.hid);
 
   if (!hospital) notFound();
   return (
     <main className="container py-8">
       <div className="flex gap-8">
-        <div className="rounded-inherit relative aspect-[3/2] w-96">
+        <div className="rounded-inherit relative aspect-[3/2] w-[32rem]">
           <Image
             className="rounded-xl object-cover shadow-xl"
             quality={100}
-            src={hospital.image ?? ""}
+            src={hospital.picture ?? ""}
             alt={hospital.name ?? ""}
             fill
           />
@@ -31,14 +28,18 @@ export default async function Page({ params }: PageProps) {
           <h1 className="text-2xl font-semibold tracking-tight text-primary-dark">
             {hospital.name}
           </h1>
-          <p>{hospital.description}</p>
+          <p>Address: {hospital.address}</p>
+          <p>District: {hospital.district}</p>
+          <p>Province: {hospital.province}</p>
+          <p>Postal code: {hospital.postalcode}</p>
+          <p>Tel: {hospital.tel}</p>
         </div>
       </div>
     </main>
   );
 }
 
-export async function generateStaticParams() {
-  const hospitals = await getHospitals();
-  return hospitals.map((hospital) => hospital.id.toString());
-}
+// export async function generateStaticParams() {
+//   const hospitals = await getHospitals();
+//   return hospitals.map((hospital) => ({ hid: hospital.id.toString() }));
+// }
