@@ -1,9 +1,12 @@
 import Indicator from "@/components/Indicator";
+import NextAuthProvider from "@/components/NextAuthProvider";
 import ThemeRegistry from "@/components/ThemeRegistry";
 import TopMenu from "@/components/TopMenu";
 import { fontMono, fontSans, fontTitle } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,7 +18,8 @@ type RootLayoutProps = {
   children: React.ReactNode;
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <body
@@ -26,11 +30,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontTitle.variable
         )}
       >
-        <ThemeRegistry>
-          <TopMenu />
-          {children}
-          <Indicator />
-        </ThemeRegistry>
+        <NextAuthProvider session={session}>
+          <ThemeRegistry>
+            <TopMenu />
+            {children}
+            <Indicator />
+          </ThemeRegistry>
+        </NextAuthProvider>
       </body>
     </html>
   );

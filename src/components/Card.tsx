@@ -1,6 +1,6 @@
 "use client";
 
-import { type Hospital } from "@/lib/schema";
+import { type Hospital } from "@/domain/hospital";
 import { cn } from "@/lib/utils";
 import { OpenInFull } from "@mui/icons-material";
 import { Dialog, DialogContent, Rating } from "@mui/material";

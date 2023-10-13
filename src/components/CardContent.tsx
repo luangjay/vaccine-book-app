@@ -1,4 +1,4 @@
-import { type Hospital } from "@/lib/schema";
+import { type Hospital } from "@/domain/hospital";
 import Image from "next/image";
 import Link from "next/link";
 

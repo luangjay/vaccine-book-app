@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Button, Tooltip } from "@mui/material";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -11,6 +12,7 @@ const covers = ["/images/cover-0.png", "/images/cover-1.png"];
 
 export default function Banner() {
   const router = useRouter();
+  const { data: session } = useSession();
   const [mode, setMode] = useState(0);
 
   const handleClick = () => {
@@ -41,7 +43,7 @@ export default function Banner() {
         </Tooltip>
         <div className="container mt-12 flex flex-col items-end">
           <h1 className="z-10 mb-4 text-end text-4xl font-semibold tracking-tight text-primary-dark">
-            Your Vaccine Partner
+            {session ? `Hello ${session.user.name}` : "Your Vaccine Partner"}
           </h1>
           <h2 className="z-10 mb-10 text-end text-2xl tracking-tight">
             Health protection made easy
