@@ -61,9 +61,9 @@ export default function BookingForm({ hospitals }: BookingFormProps) {
         </h1>
       </div>
       <div className="flex w-full flex-col gap-4">
-        <h2 className="tracking-tight text-foreground/70">
+        <p className="tracking-tight text-foreground/70">
           Personal information
-        </h2>
+        </p>
         <div className="flex w-full gap-4">
           <TextField
             size="small"
@@ -91,9 +91,7 @@ export default function BookingForm({ hospitals }: BookingFormProps) {
         </div>
       </div>
       <div className="flex w-full flex-col justify-start gap-4">
-        <h2 className="tracking-tight text-foreground/70">
-          Booking information
-        </h2>
+        <p className="tracking-tight text-foreground/70">Booking information</p>
         <div className="flex w-full gap-4">
           <TextField
             size="small"
