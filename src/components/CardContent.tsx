@@ -1,4 +1,4 @@
-import { type Hospital } from "@/domain/hospital";
+import { type Hospital } from "@/types/hospital";
 import Image from "next/image";
 import Link from "next/link";
 

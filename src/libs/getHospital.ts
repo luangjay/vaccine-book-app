@@ -1,4 +1,4 @@
-import { hospitalSchema, type Hospital } from "@/domain/hospital";
+import { hospitalSchema, type Hospital } from "@/types/hospital";
 
 export default async function getHospital(
   id: string

@@ -20,6 +20,7 @@ export default async function TopMenu() {
               <Button>Sign in</Button>
             </Link>
           )}
+          <TopMenuItem href="/mybooking">My booking</TopMenuItem>
         </div>
         <div className="flex items-center gap-4">
           <TopMenuItem href="/booking">Booking</TopMenuItem>

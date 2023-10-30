@@ -1,5 +1,5 @@
-import { hospitalSchema, type Hospital } from "@/domain/hospital";
 import { sleep } from "@/lib/utils";
+import { hospitalSchema, type Hospital } from "@/types/hospital";
 import { z } from "zod";
 
 export default async function getHospitals(): Promise<Hospital[]> {

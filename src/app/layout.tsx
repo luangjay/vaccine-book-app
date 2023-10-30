@@ -4,6 +4,7 @@ import ThemeRegistry from "@/components/ThemeRegistry";
 import TopMenu from "@/components/TopMenu";
 import { fontMono, fontSans, fontTitle } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import ReduxProvider from "@/redux/ReduxProvider";
 import type { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
@@ -30,13 +31,15 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           fontTitle.variable
         )}
       >
-        <NextAuthProvider session={session}>
-          <ThemeRegistry>
-            <TopMenu />
-            {children}
-            <Indicator />
-          </ThemeRegistry>
-        </NextAuthProvider>
+        <ReduxProvider>
+          <NextAuthProvider session={session}>
+            <ThemeRegistry>
+              <TopMenu />
+              {children}
+              <Indicator />
+            </ThemeRegistry>
+          </NextAuthProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

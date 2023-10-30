@@ -1,4 +1,4 @@
-import { authUserSchema, type AuthUser } from "@/domain/auth";
+import { authUserSchema, type AuthUser } from "@/types/auth";
 
 export default async function userLogIn(
   email: string,

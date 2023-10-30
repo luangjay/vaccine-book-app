@@ -1,4 +1,4 @@
-import { userSchema, type User } from "@/domain/user";
+import { userSchema, type User } from "@/types/user";
 
 export default async function getUserProfile(token: string): Promise<User> {
   const response = await fetch("http://localhost:5000/api/v1/auth/me", {

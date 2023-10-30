@@ -52,13 +52,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: [
-          "var(--font-sans)",
-          {
-            ...fontFamily.sans,
-            fontFeatureSettings: '"cv02", "cv03", "cv04", "cv11"',
-          },
-        ],
+        sans: ["var(--font-sans)", ...fontFamily.sans],
         mono: ["var(--font-mono)", ...fontFamily.mono],
         title: ["var(--font-title)", ...fontFamily.sans],
       },

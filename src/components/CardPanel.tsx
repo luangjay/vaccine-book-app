@@ -1,7 +1,7 @@
 "use client";
 
-import { type Hospital } from "@/domain/hospital";
 import { cn } from "@/lib/utils";
+import { type Hospital } from "@/types/hospital";
 import { Delete, ExpandLess, ExpandMore } from "@mui/icons-material";
 import { IconButton, List, ListItem, ListItemText } from "@mui/material";
 import { useReducer, useState } from "react";
