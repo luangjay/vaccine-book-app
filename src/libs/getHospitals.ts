@@ -1,10 +1,9 @@
-import { sleep } from "@/lib/utils";
 import { hospitalSchema, type Hospital } from "@/types/hospital";
 import { z } from "zod";
 
 export default async function getHospitals(): Promise<Hospital[]> {
   /* MOCK */
-  await sleep(5000);
+  // await sleep(5000);
 
   const response = await fetch("http://localhost:5000/api/v1/hospitals");
 

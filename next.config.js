@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{ hostname: "drive.google.com" }],
+    domains: ["drive.google.com"],
+  },
+  experimental: {
+    serverActions: true,
   },
 };
 

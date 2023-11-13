@@ -20,12 +20,11 @@ export default function PromoteCard() {
           Get your vaccine today
         </h2>
         <p>
-          Getting vaccinated today is crucial for protecting yourself and others
-          from severe illnesses and reducing the spread of COVID-19. It helps
-          build herd immunity, enables a return to normalcy, and reduces the
-          risk of new variants emerging.
+          It is crucial for protecting yourself and others from severe illnesses
+          and reducing the spread of COVID-19.
         </p>
         <Button
+          id={playing ? "pauseVideo" : "playVideo"}
           variant="contained"
           onClick={() => void setPlaying((prev) => !prev)}
         >

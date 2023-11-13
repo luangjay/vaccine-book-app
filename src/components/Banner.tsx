@@ -49,6 +49,7 @@ export default function Banner() {
             Health protection made easy
           </h2>
           <Button
+            id="toHospital"
             variant="contained"
             onClick={() => void router.push("/hospital")}
           >

@@ -19,6 +19,7 @@ export default function VideoPlayer({ playing }: VideoPlayerProps) {
 
   return (
     <video
+      id="videoPlayer"
       src="/videos/getvaccine.mp4"
       controls
       autoPlay
